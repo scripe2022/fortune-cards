@@ -1,0 +1,86 @@
+<style>
+    .documentation {
+        margin: 50px 0px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .content {
+        display: flex;
+        width: 100%;
+        max-width: 1000px;
+        flex-direction: column;
+    }
+    .rows {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+    }
+    .rounded {
+        padding: 10px;
+        background-color: lightgray;
+        border: 0px;
+        border-radius: 10px;
+    }
+    .rows3 {
+        justify-content: space-between;
+    }
+    .col3 {
+        display: flex;
+    }
+    .card {
+        width: 25%;
+        height: 300px;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+<script>
+    const httpGet = (theUrl) => {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, true);
+        // xmlHttp.send(null);
+        return xmlHttp.responseText;
+    }
+    const key = ['I am looking for fortune', 'feel lucky', 'boring'];
+    const show = async(e) => {
+        const cardInput = document.getElementById('card' + e + "-input");
+        const cardRes = document.getElementById('card' + e + "-res");
+        cardInput.innerHTML = key[e];
+        const str = 'https://team12.jyh.sb/mystical?message=' + key[e];
+        // const promise = httpGet(str);
+        // promise.then((res) => {
+        //     console.log(res);
+        // });
+        // console.log(promise.responseText);
+        // promise.then(res => {
+        //     console.log(res);
+        // })
+        cardRes.innerHTML = httpGet(str);
+    }
+</script>
+<div class="documentation">
+    <div class="content">
+        <div class="rows rounded">
+            We need to think more about what we need to do in our program specifically
+            Other teams have come up with ideas like using jelly beans, harry potter theme, panda express theme, game-style fortune
+            AI concerns with images + text
+            We need to first create a local MVP of our app - maybe a database of images and text that could correspond to it (use of tags)
+        </div>
+        <div class="rows rows3">
+            <div id="card0" class="col3 card" onclick="show(0)">
+                <p id="card0-input"></p>
+                <p id="card0-res"></p>
+            </div>
+            <div id="card1" class="col3 card" onclick="show(1)">
+                <p id="card1-input"></p>
+                <p id="card1-res"></p>
+            </div>
+            <div id="card2" class="col3 card" onclick="show(2)">
+                <p id="card2-input"></p>
+                <p id="card2-res"></p>
+            </div>
+        </div>
+    </div>
+</div>
