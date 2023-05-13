@@ -1,0 +1,1 @@
+[https://scripe2022.github.io/fortune-cards/](https://scripe2022.github.io/fortune-cards/) 
